@@ -39,16 +39,21 @@ export default class Todolist extends Component {
     }
 
     render() {
+        const count = this.state.tasks.filter(task => task.resolved).length;
+        let strCount = "tâches accomplies";
+        if(count <= 1) strCount = "tâche accomplie";
         return (
-            <div>
+            <main>
                 <h1>Todolist</h1>
+        <p className="count">{count + ' / ' + this.state.tasks.length + ' '}
+        {strCount}</p>
                 <ul>
         {this.state.tasks.map((task, index) => <li key={index}><span className={task.resolved ? "resolved" : null}>{task.name}</span> <button onClick={() => this.checkTask(task.id)}><span role="img" aria-label="valid">✅</span></button> <button onClick={() => this.deleteTask(task.id)}><span role="img" aria-label="delete">❌</span></button></li>)}
                 </ul>
                 <form>
                     <input type="text" placeholder="Entrez votre tâche ici" ref={this.iTask} /> <input type="submit" value="Ajouter la tâche" onClick={this.addTask}/>
                 </form>
-            </div>
+            </main>
         )
     }
 }

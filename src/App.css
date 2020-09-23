@@ -2,7 +2,42 @@ body{
   font-family : helvetica;
 }
 
+main{
+  text-align : center;
+}
+main h1{
+  font-size : 4rem;
+}
+main input{
+  padding : 10px;
+  font-size : 1.1rem;
+  box-shadow : black 2px 2px 2px;
+  margin-right : -7px;
+}
+main ul{
+  list-style-type: none;
+  margin-bottom : 50px;
+}
+main ul li{
+  display : block;
+  font-size : 1.5rem;
+  text-align : right;
+  font-weight : bold;
+  width : 50vw;
+  margin-left : 50px;
+ 
+}
+main ul li button{
+  
+  font-size : 1.5rem;
+  background-color : inherit;
+  border : none;
+}
 .resolved{
   text-decoration: line-through;
   color : green;
+}
+.count{
+  font-size : 1rem;
+  font-style : italic;
 }
