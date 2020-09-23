@@ -1,0 +1,8 @@
+body{
+  font-family : helvetica;
+}
+
+.resolved{
+  text-decoration: line-through;
+  color : green;
+}
