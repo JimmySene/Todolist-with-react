@@ -6,6 +6,7 @@ export default class Todolist extends Component {
     }
 
     iTask = React.createRef();
+    errorMessage = React.createRef();
 
     addTask = (e) => {
         e.preventDefault();
@@ -16,8 +17,11 @@ export default class Todolist extends Component {
         if(!lastTask) lastTask = 0;
         else lastTask = lastTask.id;
         
-        if(task.length < 5 || tasks.find(t => t.name === task)) return;
-
+        if(task.length < 5 || tasks.find(t => t.name === task)) {
+            this.errorMessage.current.classList.add('error-show');
+            return;
+        }
+        this.errorMessage.current.classList.remove('error-show')
         tasks.push({id:lastTask + 1, name:task, resolved:false});
         this.setState({tasks});
         this.iTask.current.value = "";
@@ -53,6 +57,9 @@ export default class Todolist extends Component {
                 <form>
                     <input type="text" placeholder="Entrez votre tâche ici" ref={this.iTask} /> <input type="submit" value="Ajouter la tâche" onClick={this.addTask}/>
                 </form>
+                <div className="error" ref={this.errorMessage}>
+                    Erreur : La tâche doit être unique et faire plus de 5 caractères.
+                </div>
             </main>
         )
     }
